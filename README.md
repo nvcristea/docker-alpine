@@ -1,3 +1,4 @@
 # About
 
-This is the Git repo with Docker alpine images.
+This is the Git repo with Alpine based images for Docker.
+ 
