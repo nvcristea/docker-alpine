@@ -1,4 +1,4 @@
-FROM enkas/alpine:3.5
+FROM nvcristea/alpine:3.5
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 
