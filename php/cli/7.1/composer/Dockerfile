@@ -1,12 +1,20 @@
-FROM nvcristea/alpine:php-7.1-cli
+FROM nvcristea/alpine-php:7.1
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 
-RUN apk add --update --no-cache curl git subversion mercurial tini bash zlib-dev
+ENV MEMCACHED_DEPS zlib-dev libmemcached-dev cyrus-sasl-dev
 
+RUN apk add --update --no-cache git tini bash zlib zlib-dev libmemcached-libs
 RUN echo "memory_limit=-1" > "$PHP_INI_DIR/conf.d/memory-limit.ini" \
-
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip bcmath
+RUN set -xe \
+    && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
+    && apk add --no-cache --update --virtual .memcached-deps $MEMCACHED_DEPS \
+    && pecl install memcached \
+    && echo "extension=memcached.so" > /usr/local/etc/php/conf.d/20_memcached.ini \
+    && rm -rf /usr/share/php7 \
+    && rm -rf /tmp/* \
+    && apk del .memcached-deps .phpize-deps
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
