@@ -14,3 +14,5 @@ RUN docker-php-ext-configure pdo \
     && docker-php-ext-install pdo_mysql
 
 COPY xdebug.ini $PHP_INI_DIR/conf.d/
+
+WORKDIR /app
