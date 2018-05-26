@@ -11,6 +11,8 @@ This is the Git repo with multiple PHP Alpine based images for Docker
 - [7.1-xdebug](https://github.com/nvcristea/docker-alpine/blob/php/php/cli/7.1/xdebug/Dockerfile) - alpine:3.4 + php:7.1 + xdebug
 
 ### php-fpm
+- [7.2-fpm-composer](https://github.com/nvcristea/docker-alpine/blob/php/php/fpm/7.2/composer/Dockerfile) - alpine:3.7 + php-fpm:7.2 + composer
+- [7.2-fpm-xdebug](https://github.com/nvcristea/docker-alpine/blob/php/php/fpm/7.2/xdebug/Dockerfile) - alpine:3.7 + php-fpm:7.2 + xdebug
 - [7.1-fpm-xdebug](https://github.com/nvcristea/docker-alpine/blob/php/php/fpm/7.1/xdebug/Dockerfile) - alpine:3.4 + php-fpm:7.1 + xdebug
 
 #### Usage example:
