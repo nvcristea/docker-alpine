@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM nvcristea/alpine:php-7.2-fpm
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 

@@ -1,4 +1,4 @@
-FROM nvcristea/alpine-php:7.2-fpm-xdebug
+FROM nvcristea/alpine:php-7.2-fpm-xdebug
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 

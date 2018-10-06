@@ -1,13 +1,6 @@
-FROM php:7.2-fpm-alpine
+FROM nvcristea/alpine:php-7.2-fpm
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
-
-# Environments
-ENV TIMEZONE        Europe/Bucharest
-
-RUN apk add --update --no-cache tzdata \
-    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
-    && echo "${TIMEZONE}" > /etc/timezone
 
 RUN docker-php-ext-configure pdo \
     && pecl install xdebug \
