@@ -1,4 +1,4 @@
-FROM nvcristea/alpine:php-7.1-cli
+FROM nvcristea/alpine-php:7.1
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 

@@ -1,12 +1,9 @@
-FROM nvcristea/alpine:php-7.1-cli
+FROM php:7.2-fpm-alpine
 
 MAINTAINER Nicolae V. Cristea <coder@cristea.bid>
 
-RUN apk add --update --no-cache curl git subversion mercurial tini bash zlib-dev
-
+RUN apk add --update --no-cache git tini bash
 RUN echo "memory_limit=-1" > "$PHP_INI_DIR/conf.d/memory-limit.ini" \
-
-RUN docker-php-ext-install zip
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
@@ -23,11 +20,10 @@ RUN curl -s -f -L -o /tmp/installer.php https://raw.githubusercontent.com/compos
     }" \
  && php /tmp/installer.php --no-ansi --install-dir=/usr/bin --filename=composer --version=${COMPOSER_VERSION} \
  && composer --ansi --version --no-interaction \
- && rm -rf /tmp/* /tmp/.htaccess
+ && rm -rf /tmp/* /tmp/.htaccess \
+ && composer self-update
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-
-WORKDIR /app
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
